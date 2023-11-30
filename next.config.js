@@ -1,6 +1,10 @@
 const withNextra = require("nextra")({
   theme: "nextra-theme-docs",
   themeConfig: "./theme.config.jsx",
+  unstable_staticImage: true,
+  unstable_flexsearch: {
+    codeblock: false,
+  },
 });
 
 module.exports = withNextra({
@@ -10,6 +14,7 @@ module.exports = withNextra({
       "user-images.githubusercontent.com",
       "github.com",
       "img.shields.io",
+      "cosmology.zone"
     ],
     unoptimized: true,
   },
