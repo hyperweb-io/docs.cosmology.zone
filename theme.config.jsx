@@ -38,6 +38,6 @@ export default {
     );
   },
   sidebar: {
-    defaultMenuCollapseLevel: 3,
+    defaultMenuCollapseLevel: 1,
   },
 };
