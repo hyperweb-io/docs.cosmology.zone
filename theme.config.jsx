@@ -4,10 +4,12 @@ import React from "react";
 
 export default {
   logo: (
-    <img
-      src="https://cosmology.zone/logos/cosmology/cosmology-with-name.svg"
-      width="150px"
-    />
+    <>
+      <img src="/images/favicon.svg" width="36px"></img>
+      <span style={{ fontWeight: 600, fontSize: 20 }}>
+        &nbsp;&nbsp;cosmology
+      </span>
+    </>
   ),
   logoLink: "https://docs.cosmology.zone",
   project: {
@@ -48,7 +50,7 @@ export default {
         <meta property="og:url" content={url} />
         <meta property="og:title" content={_title} />
         <meta property="og:description" content={"Web3 Products Provider"} />
-        <link rel="icon" type="image/x-icon" href="/images/icon.ico" />
+        <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
         <title>{_title}</title>
       </>
     );
@@ -56,8 +58,14 @@ export default {
   sidebar: {
     defaultMenuCollapseLevel: 1,
   },
-  primaryHue: 260,
-  primarySaturation: 75,
+  primaryHue: {
+    light: 260,
+    dark: 265,
+  },
+  primarySaturation: {
+    light: 75,
+    dark: 100,
+  },
   useNextSeoProps() {
     const { asPath } = useRouter();
     if (asPath !== "/") {
