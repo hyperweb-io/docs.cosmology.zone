@@ -1,20 +1,20 @@
 # Hands-on Exercises
 
-## @sign/cosmos-proto
+## @cosmonauts/cosmos-proto
 
 ### Preset
 
-Before `@sign/cosmos-proto` or `@sign/cosmos-amino` exercise, let's prepare the `auth` object.
+Before `@cosmonauts/cosmos-proto` or `@cosmonauts/cosmos-amino` exercise, let's prepare the `auth` object.
 
 ```ts
-import { Secp256k1Auth } from "@sign/core";
+import { Secp256k1Auth } from "@cosmonauts/core";
 const auth = Secp256k1Auth.fromMnemonic("word1 word2 word3...");
 ```
 
 ### Sign and Broadcast
 
 ```ts
-import { Signer } from "@sign/cosmos-proto";
+import { Signer } from "@cosmonauts/cosmos-proto";
 import { registry } from "interchain/cosmos/bank/v1beta1/tx.registry";
 
 const signer = new Signer(registry);
@@ -29,14 +29,14 @@ const txRaw = await signer.on("http://").by(auth).signMessages(messages).signed;
 const txRaw = signer.by(auth).signDoc(doc).signed;
 ```
 
-## @sign/cosmos-amino
+## @cosmonauts/cosmos-amino
 
 ### Preset
 
-Before `@sign/cosmos-proto` or `@sign/cosmos-amino` exercise, let's prepare the `auth` object.
+Before `@cosmonauts/cosmos-proto` or `@cosmonauts/cosmos-amino` exercise, let's prepare the `auth` object.
 
 ```ts
-import { Secp256k1Auth } from "@sign/core";
+import { Secp256k1Auth } from "@cosmonauts/core";
 const auth = Secp256k1Auth.fromMnemonic("word1 word2 word3...");
 ```
 
@@ -45,7 +45,7 @@ const auth = Secp256k1Auth.fromMnemonic("word1 word2 word3...");
 Except for sign and broadcast methods (with proto/direct) in `Signer`, `AminoSigner` provides extra methods doing sign and broadcast with amino.
 
 ```ts
-import { Signer } from "@sign/cosmos-proto";
+import { Signer } from "@cosmonauts/cosmos-proto";
 import { registry } from "interchain/cosmos/bank/v1beta1/tx.registry";
 import { AminoConverter } from "interchain/cosmos/bank/v1beta1/tx.amino";
 
@@ -68,14 +68,14 @@ const txRaw = await signer
 const txRaw = signer.by(auth).signDocWithAmino(stdDoc).signed;
 ```
 
-## @sign/cosmos-cosmjs
+## @cosmonauts/cosmos-cosmjs
 
 ### Preset
 
-Before `@sign/cosmos-cosmjs` exercise, let's prepare the `offlineSigner` object.
+Before `@cosmonauts/cosmos-cosmjs` exercise, let's prepare the `offlineSigner` object.
 
 ```ts
-import { Secp256k1Wallet } from "@sign/cosmjs";
+import { Secp256k1Wallet } from "@cosmonauts/cosmjs";
 const wallet = await Secp256k1Wallet.fromMnemonic("word1 word2 word3...");
 const offlineDirectSigner = wallet.toOfflineDirectSigner();
 const offlineAminoSigner = wallet.toOfflineAminoSigner();
@@ -86,7 +86,7 @@ const offlineAminoSigner = wallet.toOfflineAminoSigner();
 Except for sign and broadcast methods (with proto/direct) in `Signer`, `AminoSigner` provides extra methods doing sign and broadcast with amino.
 
 ```ts
-import { CosmjsSigner } from "@sign/cosmos-cosmjs";
+import { CosmjsSigner } from "@cosmonauts/cosmos-cosmjs";
 import { registry } from "interchain/cosmos/bank/v1beta1/tx.registry";
 import { AminoConverter } from "interchain/cosmos/bank/v1beta1/tx.amino";
 
@@ -108,7 +108,7 @@ await cosmjsSigner.signAndBroadcastSync(messages);
 const txRaw = await cosmjsSigner.sign(messages);
 ```
 
-## @sign/cosmos-stargate
+## @cosmonauts/cosmos-stargate
 
 - `StargateSigner` with same exercise as [`Signer`](#signcosmos-proto)
 - `StargateAminoSigner` with same exercise as [`AminoSigner`](#signcosmos-amino)
@@ -116,7 +116,7 @@ const txRaw = await cosmjsSigner.sign(messages);
 
 > Using `StargateCosmjsSigner` to replace `SigningStargateClient` from `@cosmjs/stargate`
 
-## @sign/cosmos-cosmwasm-stargate
+## @cosmonauts/cosmos-cosmwasm-stargate
 
 - `CosmWasmSigner` with same exercise as [`Signer`](#signcosmos-proto)
 - `CosmWasmAminoSigner` with same exercise as [`AminoSigner`](#signcosmos-amino)
