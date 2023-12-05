@@ -64,14 +64,14 @@ There’re several types of signer class, and they’re
 ├── `@cosmonauts/cosmos-cosmjs`
 │   ├── class `CosmjsSigner` (with `AminoSigner` used inside)
 │   │   │
-│   │   ├── \* Shared methods with `signingStargateClient` *\
+│   │   ├── \* Shared methods with `SigningStargateClient` and `SigningCosmWasmClient` *\
 │   │   ├── method (static) `connectWithSigner`
 │   │   ├── method `simulate` (return `bigint` rather than `number`)
 │   │   ├── method `sign`
 │   │   ├── method `signAndBroadcast`
 │   │   ├── method `signAndBroadcastSync`
 │   │   │
-│   │   ├── \* Shared methods with `stargateClient` *\
+│   │   ├── \* Shared methods with `StargateClient` and `CosmWasmClient` *\
 │   │   ├── method (query) `getChainId`
 │   │   ├── method (query) `getSequence`
 │   │   ├── method (query) `getTx`
@@ -82,9 +82,30 @@ There’re several types of signer class, and they’re
 │   ├── class `StargateSigner` extends `Signer`
 │   ├── class `StargateAminoSigner` extends `AminoSigner`
 │   ├── class `StargateCosmjsSigner` extends `CosmjsSigner`
+│   │   │
+│   │   ├── \* Shared method names with `signingStargateClient` (but with slightly DIFFERENT arguments type) *\
+│   │   ├── method `sendTokens`
+│   │   ├── method `delegateTokens`
+│   │   ├── method `undelegateTokens`
+│   │   ├── method `withdrawRewards`
+│   │   ├── method `sendIbcTokens`
 │   │
 ├── `@cosmonauts/cosmos-cosmwasm-stargate`
 │   ├── class `CosmWasmSigner` extends `Signer`
 │   ├── class `CosmWasmAminoSigner` extends `AminoSigner`
-│   └── class `CosmWasmCosmjsSigner` extends `CosmjsSigner`
+│   ├── class `CosmWasmCosmjsSigner` extends `CosmjsSigner`
+│   │   │
+│   │   ├── \* Shared method names with `signingCosmWasmClient` (but with slightly DIFFERENT arguments type) *\
+│   │   ├── method `sendTokens`
+│   │   ├── method `delegateTokens`
+│   │   ├── method `undelegateTokens`
+│   │   ├── method `withdrawRewards`
+│   │   ├── method `sendIbcTokens`
+│   │   ├── method `upload`
+│   │   ├── method `instantiate`
+│   │   ├── method `instantiate2`
+│   │   ├── method `updateAdmin`
+│   │   ├── method `clearAdmin`
+│   │   ├── method `migrate`
+│   │   └── method `executeMultiple`
 ```
