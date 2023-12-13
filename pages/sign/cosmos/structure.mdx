@@ -145,6 +145,10 @@ class CosmjsSigner {
 }
 ```
 
+> **Advanced** 
+> 
+> To add more query helper methods in `RpcClient`, download more protos (edit [cosmos/rpc/scripts/download-proto.sh](https://github.com/cosmology-tech/sign/blob/main/cosmos/rpc/scripts/download-proto.sh) and modify [Telescope config](https://github.com/cosmology-tech/sign/blob/main/cosmos/rpc/.telescope.ext.json) (path: `options.rpcClients.instantOpts[0].include.patterns`). And then run `yarn proto:update` in `cosmos/rpc` folder.
+
 ### Sign & Broadcast
 
 Helper methods for signing and broadcasting some particular types of messages (called message helper methods below) are available in `StargateCosmjsSigner` and `CosmWasmCosmjsSigner`.
@@ -176,6 +180,10 @@ class StargateCosmjsSigner {
 }
 ```
 
+> **Advanced** 
+> 
+> To add more stargate message helper methods in `StargateCosmjsSigner`, download more protos (edit [cosmos/stargate/scripts/download-proto.sh](https://github.com/cosmology-tech/sign/blob/main/cosmos/stargate/scripts/download-proto.sh) and modify [Telescope config](https://github.com/cosmology-tech/sign/blob/main/cosmos/stargate/.telescope.ext.json) (path: `options.rpcClients.instantOpts[0].include.patterns`). And then run `yarn proto:update` in `cosmos/stargate` folder.
+
 ### CosmWasm
 
 ```ts
@@ -200,5 +208,9 @@ class CosmWasmCosmjsSigner {
   executeMultiple = this.executeContract;
 }
 ```
+
+> **Advanced** 
+> 
+> To add more cosmwasm message helper methods in `CosmWasmCosmjsSigner`, download more protos (edit [cosmos/cosmwasm-stargate/scripts/download-proto.sh](https://github.com/cosmology-tech/sign/blob/main/cosmos/cosmwasm-stargate/scripts/download-proto.sh) and modify [Telescope config](https://github.com/cosmology-tech/sign/blob/main/cosmos/cosmwasm-stargate/.telescope.ext.json) (path: `options.rpcClients.instantOpts[0].include.patterns`). And then run `yarn proto:update` in `cosmos/cosmwasm-stargate` folder.
 
 At last, just a reminder that `CosmWasmCosmjsSigner` extends `StargateCosmjsSigner`, so all helper methods in `StargateCosmjsSigner` are also available in `CosmWasmCosmjsSigner`.
