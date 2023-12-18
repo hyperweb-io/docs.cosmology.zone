@@ -1,1 +1,57 @@
-# Welcome
+Interchain UI is a foundational UI library for building decentralize apps. It provides developers with pre-built components and a foundation for creating user interfaces across different frameworks, such as React, VueJS, Angular, Svelte, SolidJS, and Web Components, enabling developers to customize UI elements and themes. This gives us the ability to code a component once, and it will compile to all framework targets.
+
+## 1. Install @interchain-ui/react [#install]
+
+```bash
+# If you use yarn
+yarn add @interchain-ui/react
+
+# If you use pnpm
+pnpm i @interchain-ui/react
+```
+
+## 2. Import the CSS file [#import-css-file]
+
+Import the global CSS file at the root of your application.
+
+```tsx
+import '@interchain-ui/react/styles';
+```
+
+## 3. Add the ThemeProvider component [#add-theme-provider]
+
+Add `ThemeProvider` to your application, wrapping the root component inside of body.
+
+```tsx
+import { ThemeProvider, useTheme } from '@interchain-ui/react';
+import '@interchain-ui/react/styles';
+
+export function Root(props: LayoutProps) {
+  const { theme, themeClass, setTheme } = useTheme();
+
+  return (
+    <ThemeProvider>
+      <body className={themeClass}>
+        {props.children}
+      </body>
+    </ThemeProvider>
+  )
+}
+```
+
+## 4. Start building! [#start-building]
+
+You are now ready to use Interchain UI components!
+
+```tsx
+import { Button, Box, Text } from '@interchain-ui/react';
+
+export default function MyApp() {
+  return (
+    <Box bg='$cardBg' p='$4'>
+        <Text color='$textSecondary' fontSize='$sm'>Hello Interchain UI!</Text>
+        <Button variant='primary'>Click me!</Button>
+    </Box>
+  );
+}
+```
