@@ -103,7 +103,7 @@ Helper methods for query infomation like balances, delegations, proposals are av
 ```ts
 import { RpcClient } from "@cosmonauts/rpc";
 
-const rpcClient = new RpcClient("https://");
+const rpcClient = new RpcClient(“https://your-rpc-url-here”);
 await rpcClient.account({ address });
 await rpcClient.balance({ address });
 await rpcClient.proposal({ proposalId });
@@ -120,9 +120,9 @@ import { Signer } from "@cosmonauts/proto";
 import { AminoSigner } from "@cosmonauts/amino";
 import { CosmjsSigner } from "@cosmonauts/cosmjs";
 
-const rpcClient = new Signer().on("https://").request;
-const rpcClient = new AminoSigner().on("https://").request;
-const rpcClient = CosmjsSigner.connectWithSigner("https://", offlineSigner).request;
+const rpcClient = new Signer().on(“https://your-rpc-url-here”).request;
+const rpcClient = new AminoSigner().on(“https://your-rpc-url-here”).request;
+const rpcClient = CosmjsSigner.connectWithSigner(“https://your-rpc-url-here”, offlineSigner).request;
 ...
 ```
 
@@ -158,7 +158,7 @@ Helper methods for signing and broadcasting some particular types of messages (c
 ```ts
 import { StargateCosmjsSigner } from "@cosmonauts/stargate";
 
-const signer = StargateCosmjsSigner.connectWithSigner("https://", offlineSigner);
+const signer = StargateCosmjsSigner.connectWithSigner(“https://your-rpc-url-here”, offlineSigner);
 await signer.send(signerAddress, message, fee, memo);
 await signer.vote(signerAddress, message, fee, memo);
 await signer.delegate(signerAddress, message, fee, memo);
@@ -189,7 +189,7 @@ class StargateCosmjsSigner {
 ```ts
 import { CosmWasmCosmjsSigner } from "@cosmonauts/cosmwasm-stargate";
 
-const signer = CosmWasmCosmjsSigner.connectWithSigner("https://", offlineSigner);
+const signer = CosmWasmCosmjsSigner.connectWithSigner(“https://your-rpc-url-here”, offlineSigner);
 await signer.storeCode(signerAddress, message, fee, memo);
 await signer.migrateContract(signerAddress, message, fee, memo);
 ...
