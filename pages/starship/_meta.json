@@ -1,3 +1,7 @@
 {
-  "index": "Introduction"
+  "index": "Introduction",
+  "get-started": "Get Started",
+  "config": "Configuration",
+  "tests": "E2E Tests",
+  "advanced": "Advanced Usage"
 }

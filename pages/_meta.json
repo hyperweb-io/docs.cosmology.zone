@@ -1,13 +1,5 @@
 {
   "index": "Cosmology Tech",
-  "chain-registry": "Chain Registry",
   "cosmos-kit": "Cosmos Kit",
-  "create-cosmos-app": "Create Cosmos App",
-  "cwsc": "CWScript",
-  "interchain-ui": "Interchain UI",
-  "osmojs": "OsmoJS",
-  "sign": "Sign",
-  "starship": "Starship",
-  "telescope": "Telescope",
-  "ts-codegen": "TS Codegen"
+  "starship": "Starship"
 }
