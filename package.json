@@ -12,7 +12,7 @@
     "seo": "node ./seo/seo.js",
     "deploy": "AWS_PROFILE=webinc aws s3 sync out/ s3://docs.cosmology.zone",
     "invalidate": "AWS_PROFILE=webinc aws cloudfront create-invalidation --distribution-id E2CDD5CS37JQUE --paths \"/*\"",
-    "deploy:all": "git add . && git commit -m update && npm run export && npm run deploy && ./seo/prepare.sh"
+    "deploy:all": "npm run export && npm run deploy && ./seo/prepare.sh"
   },
   "dependencies": {
     "@chakra-ui/react": "2.4.3",
