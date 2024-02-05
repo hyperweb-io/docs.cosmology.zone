@@ -1,0 +1,33 @@
+## Composing Messages
+
+This example shows messages from the `osmojs`, which was built with Telescope.
+
+Import the `osmosis` object from `osmojs`. In this case, we're show the messages available from the `osmosis.gamm.v1beta1` module:
+
+```js
+import { osmosis } from 'osmojs';
+
+const {
+    joinPool,
+    exitPool,
+    exitSwapExternAmountOut,
+    exitSwapShareAmountIn,
+    joinSwapExternAmountIn,
+    joinSwapShareAmountOut,
+    swapExactAmountIn,
+    swapExactAmountOut
+} = osmosis.gamm.v1beta1.MessageComposer.withTypeUrl;
+```
+
+Now you can construct messages. If you use vscode or another typescript-enabled IDE, you should also be able to use `ctrl+space` to see auto-completion of the fields required for the message.
+
+```js
+import { coin } from '@cosmjs/amino';
+
+const msg = swapExactAmountIn({
+  sender,
+  routes,
+  tokenIn: coin(amount, denom),
+  tokenOutMinAmount
+});
+```

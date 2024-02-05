@@ -1,0 +1,96 @@
+## Quickstart
+
+Follow the instructions below to generate a new Typescript package that you can publish to npm.
+
+First, install `telescope`:
+
+```sh
+npm install -g @cosmology/telescope
+```
+
+### Generate
+
+Use the `generate` command to create a new package.
+
+```sh
+telescope generate
+cd ./your-new-project
+yarn
+```
+
+### Add Protobufs
+
+If you have `.proto` files, simply add them to a `./proto` folder.
+
+However, if you want to get started quickly using existing protos from our registry, simply use the `install` command.
+
+```sh
+telescope install
+```
+
+It's not necessary, but you may also specify specific packages, e.g.
+
+```sh
+telescope install @protobufs/osmosis
+```
+
+### Transpile
+
+To create the Typescript files, run the `transpile` command.
+
+```sh
+telescope transpile
+```
+
+You should now see some `.ts` files generated in `./src`. These are the real source files used in your application.
+
+Examples:
+
+```sh
+# Telescope takes chain1 folder as input,
+# and generate files in 'gen/src' folder.
+telescope transpile --protoDirs ../../__fixtures__/chain1 --outPath gen/src
+```
+
+```sh
+# Telescope takes chain1 folder as input,
+# and generate files in 'gen/src' folder using default telescope options.
+telescope transpile --protoDirs ../../__fixtures__/chain1 --outPath gen/src --useDefaults
+```
+
+```sh
+# Telescope takes chain1 folder(from args) and chain2 folder(from config) as input,
+# and generate files in 'gen/src'(defined in the config file, will override outPath in args) folder using a config file.
+# Note: --config will override --useDefaults.
+telescope transpile --protoDirs ../../__fixtures__/chain1 --config .telescope.json
+```
+
+```sh
+# Telescope takes more than one config. The config afterward will override those in front. In this case values in .telescope-ext.json will override those in .telescope.json.
+telescope transpile --config .telescope.json --config .telescope-ext.json
+```
+
+```json
+//.telescope.json
+{
+  "protoDirs": [
+    "../../fixtures/chain2"
+  ],
+  "outPath": "gen/src",
+  "options": {
+    // telescope options
+    ...
+  }
+}
+```
+
+### Build
+
+Finally, run `install` and `buidl` to generate the JS and types for publishing your module to npm.
+
+```sh
+yarn install
+yarn buidl
+```
+
+Now you should have code inside of your `./src` folder, ready for publshing via `npm publish`. Or, if you used the defaults, you can start developing and your code can be imported from `./src/codegen`;

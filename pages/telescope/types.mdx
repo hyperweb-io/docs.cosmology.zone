@@ -1,0 +1,21 @@
+## Types
+
+### Timestamp
+
+The representation of `google.protobuf.Timestamp` is configurable by the `prototypes.typingsFormat.timestamp` option.
+
+| Protobuf type    | Default/`date='date'` | `date='timestamp'`                      |
+| --------------------------- | ---------------------- | ----------------------------------|
+| `google.protobuf.Timestamp` | `Date`                 | `{ seconds: Long, nanos: number }`|
+
+TODO
+
+* [ ] add `date='string'` option
+
+### Duration
+
+The representation of `google.protobuf.Duration` is configurable by the `prototypes.typingsFormat.duration` option.
+
+| Protobuf type    | Default/`duration='duration'` | `duration='string'`                      |  |
+| --------------------------- | ---------------------- | ------------------------------------ | ---------------- |
+| `google.protobuf.Duration` | `{ seconds: Long, nanos: number }`                 | `string` |  |
