@@ -30,11 +30,11 @@ make stop
 ```
 
 ```bash
-// using kubectl get pods to know the status of running pods
+# using kubectl get pods to know the status of running pods
 kubectl get pods
-//or keep watching by:
+#or keep watching by:
 kubectl get pods -w
-// wait for "No resources found in default namespace."
+# wait for "No resources found in default namespace."
 ```
 
 - With these two steps you’re ready to go:
@@ -45,14 +45,14 @@ make install
 ```
 
 ```bash
-// using kubectl get pods to know the status of running pods
+# using kubectl get pods to know the status of running pods
 kubectl get pods
-//or keep watching by:
+#or keep watching by:
 kubectl get pods -w
-// wait for all listed pods running like:
-// cosmos-2-genesis-0     3/3
-// explorer-5575dc8774-kxs8v  1/1
-// etc...
+# wait for all listed pods running like:
+# cosmos-2-genesis-0     3/3
+# explorer-5575dc8774-kxs8v  1/1
+# etc...
 ```
 
 2. To open ports for access
@@ -74,11 +74,11 @@ Code'll be generated in the folder 'telescope/packages/starship/src/codegen'
 ## Test
 
 ```bash
-// do tests, don't run all tests at the same time on your local machine:
-// 1 setup:
+# do tests, don't run all tests at the same time on your local machine:
+# 1 setup:
 npx jest __tests__/v1/setup.test.ts
 
-// 2 authz:
+# 2 authz:
 npx jest __tests__/v1/authz.test.ts
 ```
 
