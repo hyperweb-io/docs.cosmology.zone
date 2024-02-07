@@ -1,0 +1,194 @@
+## Options
+- [Amino Encoding](/telescope/options#amino-encoding)
+- [Prototypes Options](/telescope/options#prototypes-options)
+- [Prototypes Methods](/telescope/options#prototypes-methods)
+- [LCD Client Options](/telescope/options#lcd-client-options)
+- [RPC Client Options](/telescope/options#rpc-client-options)
+- [Stargate Client Options](/telescope/options#stargate-client-options)
+- [State Management](/telescope/options#state-management)
+  - [React Query](/telescope/options#react-query)
+  - [Mobx](/telescope/options#mobx)
+  - [Pinia](/telescope/options#pinia)
+- [Typings and Formating](/telescope/options#typings-and-formating)
+- [Protobuf parser](/telescope/options#protobuf-parser)
+- [Typescript Disabling](/telescope/options#typescript-disabling)
+- [ESLint Disabling](/telescope/options#eslint-disabling)
+- [Bundle](/telescope/options#bundle)
+- [Output](/telescope/options#output)
+
+### Amino Encoding
+
+| option                         | description                                                     | defaults   |
+| ------------------------------ | --------------------------------------------------------------  | ---------- |
+| `aminoEncoding.enabled`        | generate amino types and amino converters                       | `true`     |
+| `aminoEncoding.disableMsgTypes`        | disable generating AminoMsg types                | `false`     |
+| `aminoEncoding.casingFn`       | set the amino-casing function for a project                     | `snake()`  |
+| `aminoEncoding.exceptions`     | set specific aminoType name exceptions                          | see code   |
+| `aminoEncoding.typeUrlToAmino` | create functions for aminoType name exceptions                  | `undefined`|
+| `aminoEncoding.useLegacyInlineEncoding` | @deprecated. To use legacy inline encoding instead of using v2 recursive encoding                  | `false`|
+| `aminoEncoding.useRecursiveV2encoding` | this's been removed. See useLegacyInlineEncoding instead.                  |  |
+
+### Implemented Interface Options
+
+| option                                    | description                                                     | defaults   |
+| ----------------------------------------- | --------------------------------------------------------------  | ---------- |
+| `interfaces.enabled`                      | enables converters convert between Any type and specific implemented interfaces.                | `true`     |
+| `interfaces.useGlobalDecoderRegistry`                      |    enables GlobalDecoderRegistry and related functions. Highly recommended to enable when dealing with fields with 'accepted_interface' option. Please see 'packages/telescope/__tests__/impl-interfaces.test.ts' for usage.             | `false`     |
+| `interfaces.useUseInterfacesParams`                 | decides if add `useInterfaces` argument to `decode` and `toAmino` functions.                | `false`     |
+| `interfaces.useByDefault`                 | decides if interface decoders are used by default (default for `useInterfaces` argument to `decode` and `toAmino` functions).                | `true`     |
+| `interfaces.useByDefaultRpc`                 | decides if interface decoders are used by default by the RPC clients.                | `true`     |
+| `interfaces.useUnionTypes`                | Generate Any type as union types(TextProposal \| RegisterIncentiveProposal) instead of intersection types(TextProposal & RegisterIncentiveProposal).                | `false`     |
+
+### Prototypes Options
+
+| option                                    | description                                                     | defaults   |
+| ----------------------------------------- | --------------------------------------------------------------  | ---------- |
+| `prototypes.enabled`                      | enables the generation of proto encoding methods                | `true`     |
+| `prototypes.includePackageVar`            | export a `protoPackage` variable to indicate package name       | `false`    |
+| `prototypes.includes.packages`            | include a set of packages when transpilation. (if a package both meet include and exclude, it'll be excluded)                    | `undefined`|
+| `prototypes.includes.protos`              | include a set of proto files when transpilation. (if a proto both meet include and exclude, it'll be excluded)                 | `undefined`|
+| `prototypes.excluded.packages`            | exclude a set of packages from transpilation                    | `undefined`|
+| `prototypes.excluded.protos`              | try to exclude a set of proto files from transpilation. if files inside the list are dependencies to other files, they'll be still transpiled.                 | `undefined`|
+| `prototypes.excluded.hardProtos`              | exclude a set of proto files from transpilation. Files in this list will be excluded no mater it's dependency to other files or not.                 | `undefined`|
+| `prototypes.fieldDefaultIsOptional`       | boolean value representing default optionality of field         | `false`    |
+| `prototypes.useOptionalNullable`          | use `(gogoproto.nullable)` values in determining optionality    | `true`     |
+| `prototypes.allowUndefinedTypes`          | boolean value allowing `Type`s to be `undefined`                | `false`    |
+| `prototypes.allowEncodeDefaultScalars`          | boolean value allowing encoders encoding default values of scalar types. e.g. empty string, 0 or false                | `false`    |
+| `prototypes.optionalQueryParams`          | boolean value setting queryParams to be optional                | `false`    |
+| `prototypes.optionalPageRequests`         | boolean value setting `PageRequest` fields to optional          | `false`    |
+| `prototypes.addTypeUrlToDecoders`         | add $typeUrl field to generated interfaces          | `true`    |
+| `prototypes.addAminoTypeToObjects`         | add aminoType field to generated Decoders          | `false`    |
+| `prototypes.addTypeUrlToObjects`         | add typeUrl field to generated Decoders          | `true`    |
+| `prototypes.enableRegistryLoader`         |    generate Registry loader to *.registry.ts files       | `true`    |
+| `prototypes.enableMessageComposer`         |    generate MessageComposer to *.registry.ts files       | `true`    |
+
+### Prototypes Methods
+
+| option                             | description                                                        | defaults|
+| ---------------------------------- | -----------------------------------------------------------------  | ------- |
+| `prototypes.methods.encode`        | boolean to enable `encode` method on proto objects                 | `true`  |
+| `prototypes.methods.decode`        | boolean to enable `decode` method on proto objects                 | `true`  |
+| `prototypes.methods.fromJSON`      | boolean to enable `fromJSON` method on proto objects               | `true`  |
+| `prototypes.methods.toJSON`        | boolean to enable `toJSON` method on proto objects                 | `true`  |
+| `prototypes.methods.fromPartial`   | boolean to enable `fromPartial` method on proto objects            | `true`  |
+| `prototypes.methods.fromSDK`       | boolean to enable `fromSDK` method on proto objects                | `false` |
+| `prototypes.methods.toSDK`         | boolean to enable `toSDK` method on proto objects                  | `false` |
+
+### LCD Client Options
+
+| option                         | description                                                     | defaults   |
+| ------------------------------ | --------------------------------------------------------------  | ---------- |
+| `lcdClients.enabled`           | generate LCD clients that can query proto `Query` messages      | `true`     |
+| `lcdClients.bundle`            | will generate factory bundle aggregate of all LCD Clients       | `true`     |
+| `lcdClients.scoped`            | will generate factory of scoped LCD Clients                     | `undefined`|
+| `lcdClients.scopedIsExclusive` | will allow both scoped bundles and all RPC Clients              | `true`     |
+
+See [LCD Clients](#lcd-clients) for more info.
+
+### RPC Client Options
+
+| option                         | description                                                             | defaults                      |
+| ------------------------------ | ----------------------------------------------------------------------  | ----------------------------- |
+| `rpcClients.type`              | will generate this type of RPC client (`tendermint`, `gRPC-web`, `gRPC`)| `tendermint`                  |
+| `rpcClients.enabled`           | generate RPC clients that can interact with proto messages              | `true`                        |
+| `rpcClients.bundle`            | will generate factory bundle aggregate of all RPC Clients               | `true`                        |
+| `rpcClients.camelCase`         | use camel-case for RPC methods when generating RPC clients              | `true`                        |
+| `rpcClients.scoped`            | will generate factory of scoped RPC Clients                             | `undefined`                   |
+| `rpcClients.scopedIsExclusive` | will allow both scoped bundles and all RPC Clients                      | `true`                        |
+| `rpcClients.enabledServices`   | which services to enable                                                | [`Msg`,`Query`,`Service`]     |
+| `rpcClients.instantOps` |        will generate instant rpc operations in the file `service-ops.ts` under root folder, which contains customized classes having selected rpc methods    | `undefined`                        |
+| `rpcClients.serviceImplement` |     assign implement type of rpc methods, `Query` or `Tx`, by setting patterns under service types.       | `undefined`                        |
+
+See [RPC Clients](#rpc-clients) for more info.
+
+### Stargate Client Options
+
+| option                                       | description                                                     | defaults |
+| -------------------------------------------- | --------------------------------------------------------------  | ---------|
+| `stargateClients.includeCosmosDefaultTypes`  | if true, will include the cosmjs defaults with stargate clients | `true` (except cosmos package) |
+| `stargateClients.addGetTxRpc`  | if true, will add getSigningTxRpc to clients in namespaces | false |
+
+### State Management
+
+#### React Query
+
+| option                           | description                                                             | defaults |
+| -------------------------------- | ----------------------------------------------------------------------  | ---------|
+| `reactQuery.enabled`             | if true, will create react hooks that use `@tanstack/react-query` hooks | `false`  |
+| `reactQuery.needExtraQueryKey`       | if true, users can input extra react query key to some customized hooks. e.g.['rpcEndpoint', 'yourExtraKey'] | `false`  |
+| `reactQuery.include.protos`      | if set, will create the hooks on matched proto filenames or patterns using minimatch           | `[]`     |
+| `reactQuery.include.packages`    | if set, will create the hooks on matched packages files using minimatch           | `[]`     |
+| `reactQuery.include.patterns`    | if set, will create the hooks on matched patterns of files using minimatch(deprecated in favor of packages and protos have been supported minimatch)           | `[]`     |
+| `reactQuery.instantExport.include.patterns`    | if set, will expose instant hooks on matched patterns of packages + method(e.g. cosmos.bank.v1beta1.useBalance) using minimatch. If there're duplicated method names in multiple packages without setting `reactQuery.instantExport.nameMapping`, one duplicated name will created like: useCosmosBankV1beta1Balance           | `[]`     |
+| `reactQuery.instantExport.nameMapping`    |   map an alias to a package + method in case of better naming of duplicated method names. (e.g. useBankBalance: cosmos.bank.v1beta1.useBalance) Customized hook name is set in front of pkg+method, by doing this we can prevent duplicate alias.        | `{}`     |
+
+#### Mobx
+
+| option                           | description                                                             | defaults |
+| -------------------------------- | ----------------------------------------------------------------------  | ---------|
+| `mobx.enabled`                   | if true, will create mobx stores that use `mobx`                        | `false`  |
+| `mobx.include.protos`                            | if set, will create the mobx stores on matched proto filenames or patterns using minimatch           | `[]`     |
+| `mobx.include.packages`                            | if set, will create the mobx stores on matched packages files using minimatch           | `[]`     |
+| `mobx.include.patterns`                            | if set, will create the mobx stores on matched patterns of proto files using minimatch(deprecated in favor of packages and protos have been supported minimatch)           | `[]`     |
+
+#### Pinia
+
+| option                           | description                                                             | defaults |
+| -------------------------------- | ----------------------------------------------------------------------  | ---------|
+| `pinia.enabled`                  | if true, will create pinia stores that use `pinia`                      | `false`  |
+| `mobx.include.protos`            | if set, will create the pinia stores on matched proto filenames or patterns using minimatch           | `[]`     |
+| `mobx.include.packages`          | if set, will create the pinia stores on matched packages files using minimatch           | `[]`     |
+| `mobx.include.patterns`          | if set, will create the pinia stores on matched patterns of proto files using minimatch(deprecated in favor of packages and protos have been supported minimatch)           | `[]`     |
+
+### Typings and Formating
+
+| option                                    | description                                                     | defaults  |
+| ----------------------------------------- | --------------------------------------------------------------  | --------- |
+| `prototypes.typingsFormat.customTypes.useCosmosSDKDec` | enable handling "prototypes.typingsFormat.customTypes.useCosmosSDKDec" proto custom type. Used to show decimal fields with the custom type correctly. Highly recommend set to true.    | `true`    |
+| `prototypes.typingsFormat.num64` | 'long' or 'bigint', the way of generating int64 proto types, set to 'bigint' to enable using more stable built-in type   | `bigint`    |
+| `prototypes.typingsFormat.useTelescopeGeneratedType` |  Discard GeneratedType from cosmjs, use TelescopeGeneratedType instead inside *.registry.ts files  | `false`    |
+| `prototypes.typingsFormat.useDeepPartial` | defaults to true, but if disabled uses the `Partial` TS type    | `false`    |
+| `prototypes.typingsFormat.useExact`       | defaults to false, but if enabled uses the `Exact` TS type      | `false`   |
+| `prototypes.typingsFormat.timestamp`      | use either `date` or `timestamp` for `Timestamp` proto type     | "date"    |
+| `prototypes.typingsFormat.duration`       | use either `duration` or `string` for `Duration` proto type     | "duration"|
+| `prototypes.typingsFormat.setDefaultEnumToUnrecognized`       |  false: enum empty value would be 0, true: -1(value for enum unrecognized)    |true|
+| `prototypes.typingsFormat.setDefaultCustomTypesToUndefined`       |  true: Timestamp,Duration,Any,Coin empty value would be undefined., false: using fromPartial to get an empty obj    |false|
+
+### Protobuf parser
+
+| option                                    | description                                                     | defaults  |
+| ----------------------------------------- | --------------------------------------------------------------  | --------- |
+| `prototypes.parser.keepCase`              | passes `keepCase` to protobuf `parse()` to keep original casing | `true`   |
+| `prototypes.parser.alternateCommentMode`  | passes `alternateCommentMode` to protobuf `parse()` method      | `true`    |
+| `prototypes.parser.preferTrailingComment` | passes `preferTrailingComment` to protobuf `parse()` method     | `false`   |
+
+### Typescript Disabling
+
+| option                                       | description                                                     | defaults |
+| -------------------------------------------- | --------------------------------------------------------------  | ---------|
+| `tsDisable.disableAll`                       | if true, will include `//@ts-nocheck` on every output file      | `false`  |
+| `tsDisable.patterns`                         | if set, will include `//@ts-nocheck` on matched patterns        | `[]`     |
+| `tsDisable.files`                            | if set, will include `//@ts-nocheck` on matched files           | `[]`     |
+
+### ESLint Disabling
+
+| option                                       | description                                                       | defaults |
+| -------------------------------------------- | ----------------------------------------------------------------  | ---------|
+| `eslintDisable.disableAll`                   | if true, will include `/* eslint-disable */` on every output file | `false`  |
+| `eslintDisable.patterns`                     | if set, will include `/* eslint-disable */` on matched patterns   | `[]`     |
+| `eslintDisable.files`                        | if set, will include `/* eslint-disable */` on matched files      | `[]`     |
+
+### Bundle
+
+| option                         | description                                                     | defaults   |
+| ------------------------------ | --------------------------------------------------------------  | ---------- |
+| `bundle.enabled`               | bundle all files into a scoped index file                       | `true`     |
+
+### Output
+
+| option                         | description                                                        | defaults   |
+| ------------------------------ | -----------------------------------------------------------------  | ---------- |
+| `env`          | 'default' or 'v-next', set to 'v-next' to enable yet to release features                                             | `default`     |
+| `removeUnusedImports`          | removes unused imports                                             | `true`     |
+| `classesUseArrowFunctions`     | classes use arrow functions instead of `bind()`ing in constructors | `false`    |
+| `includeExternalHelpers`       | exports a few helpers functions in `extern.ts`                     | `false`    |

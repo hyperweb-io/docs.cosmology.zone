@@ -1,0 +1,11 @@
+{
+  "index": "Developing Telescope",
+  "setup": "Setup",
+  "tests": "Tests",
+  "starship-tests": "Starship Tests",
+  "packages": "Packages",
+  "working-with-asts": "Working with Asts",
+  "helpers": "Common helpers or utils",
+  "creating-new-generators": "Creating generators",
+  "migration": "Migration to v1.0"
+}
