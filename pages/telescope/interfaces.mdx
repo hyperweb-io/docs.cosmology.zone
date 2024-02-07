@@ -1,0 +1,74 @@
+## Interfaces
+
+To utilize polymorphic type fields(with '(cosmos_proto.accepts_interface)') generation, automatic wrapping/unwrapping, and type checking with the `is` function, configure as follows:
+
+```json
+"interfaces": {
+  "enabled": true,
+  "useGlobalDecoderRegistry": true,
+  "useUnionTypes": true
+}
+```
+
+This configuration enables the generation of more expressive and type-safe TypeScript code, particularly for handling polymorphic types and improving runtime type checking.
+
+### Samples
+
+#### 1. Polymorphic Type Field Generation
+
+When the tool encounters a field with the annotation `(cosmos_proto.accepts_interface) = "Authorization"`, it generates a polymorphic type field. This means the field will be represented as a union type in the generated TypeScript code, allowing for more specific type handling.
+
+For example, a field annotated in the `.proto` file will result in a TypeScript field like:
+
+```typescript
+authorization: GenericAuthorization | DepositDeploymentAuthorization | Any;
+```
+
+#### 2. Automatic Wrapping or Unwrapping
+
+The tool automatically wraps or unwraps the polymorphic field when encoding or decoding. This process translates the specific TypeScript object into a generic `Any` type format for Protobuf and vice versa, without requiring manual conversion.
+
+##### Encoding Sample:
+
+```typescript
+const msg = MsgGrant.fromPartial({
+  granter: address1,
+  grantee: address2,
+  grant: Grant.fromPartial({
+    authorization: SendAuthorization.fromPartial({
+      spendLimit: [{
+        denom: denom,
+        amount: "1000000",
+      }],
+    }),
+  }),
+});
+
+// SendAuthorization will be wrapped into Any type when broadcasting
+// client.signAndBroadcast(..., [ msg ], ...)
+```
+
+##### Decoding Sample:
+
+```typescript
+const authsResults = await queryClient.cosmos.authz.v1beta1.granteeGrants({
+  grantee: address2,
+});
+
+// auth's been unwrapped into SendAuthorization type from Any.
+const auth = authsResults.grants[0].authorization;
+```
+
+#### 3. The `is` Function
+
+The `is` function is automatically generated for polymorphic types, allowing developers to check at runtime if a decoded object matches a specific type. This function enhances type safety by providing a straightforward way to assert the type of polymorphic fields.
+
+##### Using the `is` Function:
+
+```typescript
+if (SendAuthorization.is(auth)) {
+  expect(auth.spendLimit[0].amount).toBe("1000000");
+}
+```
+
+This example demonstrates how to use the `is` function to check if the `authorization` field is of the type `SendAuthorization` and then perform operations based on that check.
