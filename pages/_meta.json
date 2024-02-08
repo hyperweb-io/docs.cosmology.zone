@@ -2,5 +2,7 @@
   "index": "Cosmology",
   "cosmos-kit": "Cosmos Kit",
   "starship": "Starship",
-  "telescope": "Telescope"
+  "telescope": "Telescope",
+  "ts-codegen": "TS Codegen",
+  "osmojs": "Osmojs"
 }
