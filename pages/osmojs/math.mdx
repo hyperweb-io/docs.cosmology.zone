@@ -83,7 +83,7 @@ const liquidity = calcPoolLiquidity(pool, prices);
 ```
 
 Pool liquidity is calculated using the formula below:
-
+$$liquidity=\dfrac{tokenA}{10^{exponentA}}\times priceA + \dfrac{tokenB}{10^{exponentB}}\times priceB$$
 For pools with multiple tokens, just add more tokens to the end.
 
 #### `calcCoinsNeededForValue`
@@ -98,7 +98,7 @@ const coinsNeeded = calcCoinsNeededForValue(prices, poolInfo, value);
 
 The amount of either of the tokens needed in a pool is calculated using the formula below:
 
-
+$$amountNeeded=\dfrac{tokenWeight}{totalWeight}\times value \div price\times 10^{exponent}$$
 
 #### `calcMaxCoinsForPool`
 
@@ -145,9 +145,11 @@ For superfluid APR, you can get all the pools' APRs from this [endpoint](https:/
 
 The formula for calculating the gauge APR:
 
+$$gaugeAPR=\dfrac{totalCoins-distributedCoins}{10^{exponent}}\times price\div liquidity\times 36500$$
 
 Fees APR works in a similar way:
 
+$$feesAPR=\dfrac{tradingVolume7d}{7}\times swapFee\div liquidity\times 36500$$
 
 ### Swap Calculations
 
@@ -220,17 +222,18 @@ yarn publish
 
 Checkout these related projects:
 
-- [@cosmology/telescope](https://github.com/cosmology-tech/telescope) Your Frontend Companion for Building with TypeScript with Cosmos SDK Modules.
-- [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) Convert your CosmWasm smart contracts into dev-friendly TypeScript classes.
-- [chain-registry](https://github.com/cosmology-tech/chain-registry) Everything from token symbols, logos, and IBC denominations for all assets you want to support in your application.
-- [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) Experience the convenience of connecting with a variety of web3 wallets through a single, streamlined interface.
-- [create-cosmos-app](https://github.com/cosmology-tech/create-cosmos-app) Set up a modern Cosmos app by running one command.
-- [interchain-ui](https://github.com/cosmology-tech/interchain-ui) The Interchain Design System, empowering developers with a flexible, easy-to-use UI kit.
-- [starship](https://github.com/cosmology-tech/starship) Unified Testing and Development for the Interchain.
+* [@cosmology/telescope](https://github.com/cosmology-tech/telescope) Your Frontend Companion for Building with TypeScript with Cosmos SDK Modules.
+* [@cosmwasm/ts-codegen](https://github.com/CosmWasm/ts-codegen) Convert your CosmWasm smart contracts into dev-friendly TypeScript classes.
+* [chain-registry](https://github.com/cosmology-tech/chain-registry) Everything from token symbols, logos, and IBC denominations for all assets you want to support in your application.
+* [cosmos-kit](https://github.com/cosmology-tech/cosmos-kit) Experience the convenience of connecting with a variety of web3 wallets through a single, streamlined interface.
+* [create-cosmos-app](https://github.com/cosmology-tech/create-cosmos-app) Set up a modern Cosmos app by running one command.
+* [interchain-ui](https://github.com/cosmology-tech/interchain-ui) The Interchain Design System, empowering developers with a flexible, easy-to-use UI kit.
+* [starship](https://github.com/cosmology-tech/starship) Unified Testing and Development for the Interchain.
 
 ## Credits
 
 🛠 Built by Cosmology — if you like our tools, please consider delegating to [our validator ⚛️](https://cosmology.zone/validator)
+
 
 ## Disclaimer
 
