@@ -5,16 +5,17 @@ const withNextra = require("nextra")({
   unstable_flexsearch: {
     codeblock: false,
   },
+  latex: true,
 });
 
 module.exports = withNextra({
-  output: 'export',
+  output: "export",
   images: {
     domains: [
       "user-images.githubusercontent.com",
       "github.com",
       "img.shields.io",
-      "cosmology.zone"
+      "cosmology.zone",
     ],
     unoptimized: true,
   },
