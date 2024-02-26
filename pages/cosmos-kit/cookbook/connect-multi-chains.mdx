@@ -11,7 +11,7 @@ Let's take `keplr-extension` for example.
 import { useWalletClient } from "@cosmos-kit/react";
 
 export default function Home() {
-  const { status, client } = useWalletClient("keplr-extension"); // or comostation-extension, leap-extension, etc.
+  const { status, client } = useWalletClient("keplr-extension"); // or cosmostation-extension, leap-extension, etc.
 
   useEffect(() => {
     if (status === "Done") {
