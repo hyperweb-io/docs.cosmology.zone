@@ -1,4 +1,4 @@
-# OsmoJS
+# OsmoJS <span id="osmojs"></span>
 
 <p align="center">
   <a href="https://github.com/osmosis-labs/osmojs">
@@ -81,8 +81,9 @@ npm install osmojs
   - [Broadcasting Messages](#broadcasting-messages)
 - [Advanced Usage](#advanced-usage)
 - [Developing](#developing)
-- [Credits](#credits)
 - [Related](#related)
+- [Credits](#credits)
+- [Disclaimer](#disclaimer)
 
 ## Usage
 

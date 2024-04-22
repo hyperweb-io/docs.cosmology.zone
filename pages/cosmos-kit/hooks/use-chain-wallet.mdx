@@ -1,6 +1,6 @@
 ## Hook - useChainWallet
 
-- required provider: [**ChainProvider**](/provider/chain-provider) from either `@cosmos-kit/react` or `@cosmos-kit/react-lite`
+- required provider: [**ChainProvider**](../provider/chain-provider) from either `@cosmos-kit/react` or `@cosmos-kit/react-lite`
 
 - parameters:
   - **chainName**: `ChainName` ( = `string` );
@@ -9,7 +9,7 @@
 
 > parameter `sync` means whether to synchronize connection and disconnection to all other activated chainWallets.
 
-- return type: [**ChainWalletContext**](#type-chainwalletcontext)
+- return type: [**ChainWalletContext**](#type---chainwalletcontext)
 
 ## Type - ChainWalletContext
 
@@ -38,8 +38,8 @@
 | ---------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | -------- |
 | **connect**                  | connect wallet                                                                        | **wallet**?: `WalletName`                                                                                                    | `void`                           | Y        |
 | **disconnect**               | disconnect current selected wallet                                                    | -                                                                                                                            | `void`                           | Y        |
-| **getRpcEndpoint**           | return rpc endpoint, `isLazy` explanation is [here](/provider/chain-provider#isLazy)  | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
-| **getRestEndpoint**          | return rest endpoint, `isLazy` explanation is [here](/provider/chain-provider#isLazy) | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
+| **getRpcEndpoint**           | return rpc endpoint, `isLazy` explanation is [here](../provider/chain-provider#islazy)  | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
+| **getRestEndpoint**          | return rest endpoint, `isLazy` explanation is [here](../provider/chain-provider#islazy) | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
 | **getStargateClient**        | -                                                                                     | -                                                                                                                            | `StargateClient`                 | Y        |
 | **getCosmWasmClient**        | -                                                                                     | -                                                                                                                            | `CosmWasmClient`                 | Y        |
 | **getSigningStargateClient** | always validate endpoint in method                                                    | -                                                                                                                            | `SigningStargateClient`          | Y        |
@@ -70,7 +70,7 @@
 
 ### Methods from Wallet Client
 
-> These methods are equal to wallet client methods with argument `chainId` assigned as `chainId` corresponding to hook argument `chainName`. If you want to directly use wallet client methods, choose hook [`useWalletClient`](/hooks/use-wallet-client) instead.
+> These methods are equal to wallet client methods with argument `chainId` assigned as `chainId` corresponding to hook argument `chainName`. If you want to directly use wallet client methods, choose hook [`useWalletClient`](../hooks/use-wallet-client) instead.
 
 | Name                       | Description                                                                                                                                                                     | Parameters                                                                                 | Return Type           | Is Async |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | --------------------- | -------- |

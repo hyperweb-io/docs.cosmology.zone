@@ -28,7 +28,7 @@
 
 ## Add New Wallets from Scratch
 
-### 1️⃣ Prepare basic information for wallet
+### 1️⃣ Prepare basic information for wallet <span id="1-prepare-basic-information-for-wallet"></span>
 
 #### Required properties
 
@@ -48,7 +48,7 @@
 | ----------------------------- | ---------------| ------------------------|
 | **rejectMessage**             | `string` \| `{ source: string; target?: string }`  | `rejectMessage` or `rejectMessage.source` is error message string thrown by wallet app/extension when user rejects, while `rejectMessage.target` is `message` returned by hooks. If not provided, `target` would be `'Request Rejected!'` |
 | **connectEventNamesOnWindow** | `string[]`                                         | window event names to fire auto-connect                                                                                                        |
-| **connectEventNamesOnClient** | `string[]`                                         | wallet client event names to fire auto-connect (make sure `on` and `off` methods are defined in [`WalletClient`](#2️⃣-implement-walletclient))   |
+| **connectEventNamesOnClient** | `string[]`                                         | wallet client event names to fire auto-connect (make sure `on` and `off` methods are defined in [`WalletClient`](#2-implement-walletclient))   |
 | **downloads**                 | [`DownloadInfo[]`](https://github.com/cosmology-tech/cosmos-kit/blob/ce50648487e73c1f6f17777347df7984168381af/packages/core/src/types/wallet.ts#L28-L31) | wallet app/extension download information |
 | **logo**                      | `string` \| `{ major: string, minor: string }`     | wallet logo url, display on default modal. For MetaMask Snaps, use `logo: { major: METAMASK_LOGO, minor: WALLET_LOGO }`|
 | **extends**                   | 'MetaMask'                                         | indicate it's a MetaMask Snap
@@ -57,9 +57,9 @@
 
 - [Keplr Extension - Wallet Info](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-extension/src/extension/registry.ts)
 
-- [Keplr Mobile - Wallet Info](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-extension/src/wallet-connect/registry.ts)
+- [Keplr Mobile - Wallet Info](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-mobile/src/wallet-connect/registry.ts)jk
 
-### 2️⃣ Implement `WalletClient`
+### 2️⃣ Implement `WalletClient` <span id="2-implement-walletclient"></span>
 
 `MainWallet` is a class organizing all `ChainWallet`s. **It should extend `MainWalletBase` class**, in which protected `_chainWallets` property stores all `ChainWallet`s.
 
@@ -84,7 +84,7 @@
 
 - [Keplr Client](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-extension/src/extension/client.ts)
 
-### 3️⃣ Extend `ChainWalletBase`
+### 3️⃣ Extend `ChainWalletBase` <span id="3-extend-chainwalletbase"></span>
 
 Create a `ChainWallet` class that extends `ChainWalletBase`. `ChainWallet` provides wallet information for a particular chain, e.g. `address`, `offlineSigner`, etc.
 
@@ -94,13 +94,13 @@ Create a `ChainWallet` class that extends `ChainWalletBase`. `ChainWallet` provi
 
 - [Keplr Extension - Chain Wallet](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-extension/src/extension/chain-wallet.ts)
 
-- [Keplr Mobile - Chain Wallet](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/keplr/src/wallet-connect/chain-wallet.ts)
+- [Keplr Mobile - Chain Wallet](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-mobile/src/wallet-connect/chain-wallet.ts)
 
 ### 4️⃣ Extend `MainWalletBase`
 
 Create a `MainWallet` class that extends `MainWalletBase`. `MainWallet` organizes all `ChainWallet`s, which are stored in protected member `_chainWallets`.
 
-> Note: Class `ChainWallet` created in [Step 3](#3️⃣-extend-chainWalletbase) is required in `MainWalletBase` construction.
+> Note: Class `ChainWallet` created in [Step 3](#3-extend-chainwalletbase) is required in `MainWalletBase` construction.
 
 #### Required methods
 
@@ -108,7 +108,7 @@ Create a `MainWallet` class that extends `MainWalletBase`. `MainWallet` organize
 | -------------- | ------------------------------------------ |
 | **initClient** | `() => void \| Promise<void>`<sup>\*</sup> |
 
-\* <span style={{fontSize: '0.85rem'}}> `WalletClient` is the one implemented in [Step 2](#2️⃣-implement-walletclient).</span>
+\* <span style={{fontSize: '0.85rem'}}> `WalletClient` is the one implemented in [Step 2](#2-implement-walletclient).</span>
 
 Also, feel free to overwrite methods in `MainWalletBase` or add new methods/properties if necessary.
 
@@ -116,17 +116,17 @@ Also, feel free to overwrite methods in `MainWalletBase` or add new methods/prop
 
 - [Keplr Extension - Main Wallet](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-extension/src/extension/main-wallet.ts)
 
-- [Keplr Mobile - Main Wallet](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/keplr/src/wallet-connect/main-wallet.ts)
+- [Keplr Mobile - Main Wallet](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-mobile/src/wallet-connect/main-wallet.ts)
 
 ### 5️⃣ Get `MainWallet` instance
 
-You can construct your `MainWallet` Instance according to your `MainWallet` construct method now. Usually the `walletInfo` object prepared in [Step 1](#1️⃣-prepare-basic-information-for-wallet) is imported here as a construction argument.
+You can construct your `MainWallet` Instance according to your `MainWallet` construct method now. Usually the `walletInfo` object prepared in [Step 1](#1-prepare-basic-information-for-wallet) is imported here as a construction argument.
 
 #### Examples
 
-- [keplrExtension & keplrMobile](https://github.com/cosmology-tech/cosmos-kit/tree/main/packages/keplr/src/keplr.ts)
+- [keplrExtension](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-extension/src/keplr.ts) & [keplrMobile](https://github.com/cosmology-tech/cosmos-kit/tree/main/wallets/keplr-mobile/src/keplr.ts)
 
-Last but not least, append this instance to the `wallets` property of [ChainProvider](/provider/chain-provider).
+Last but not least, append this instance to the `wallets` property of [ChainProvider](../provider/chain-provider).
 
 ## 6️⃣ Don't Forget To Update Docs
 
