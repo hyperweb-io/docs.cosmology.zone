@@ -26,7 +26,7 @@ registry:
   image: ghcr.io/cosmology-tech/starship/registry:20230614-7173db2
 ```
 
-> Note: `registry.localhost` is set to true by default, meaning if the ports are specified in chains[].ports, then we set the various api endpoints of the chain registry to `localhost:<port>`. Make sure `rest`, `grpc`, `rpc` are set as [chain ports](https://starship.cosmology.tech/config/chains#ports). If set to false, then it is set to kubernetes internal DNS endpoints.
+> Note: `registry.localhost` is set to true by default, meaning if the ports are specified in chains[].ports, then we set the various api endpoints of the chain registry to `localhost:<port>`. Make sure `rest`, `grpc`, `rpc` are set as [chain ports](https://github.com/cosmology-tech/starship/blob/main/docs/pages/config/chains.mdx#ports). If set to false, then it is set to kubernetes internal DNS endpoints.
 
 ### Usage
 

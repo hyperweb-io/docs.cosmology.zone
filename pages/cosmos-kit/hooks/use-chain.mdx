@@ -1,8 +1,8 @@
 ## Hook - useChain
 
-- required provider: [**ChainProvider**](/provider/chain-provider) from either `@cosmos-kit/react` or `@cosmos-kit/react-lite`
+- required provider: [**ChainProvider**](../provider/chain-provider) from either `@cosmos-kit/react` or `@cosmos-kit/react-lite`
 
-> To use `useChain` with `ChainProvider` from `@cosmos-kit/react-lite`, property [`walletModal`](/provider/chain-provider#walletmodal) must be provided. Or you can choose `ChainProvider` from `@cosmos-kit/react`, which provides `DefaultModal`. Or you can use [`useChainWallet`](/hooks/use-chain-wallet) instead.
+> To use `useChain` with `ChainProvider` from `@cosmos-kit/react-lite`, property [`walletModal`](../provider/chain-provider#walletmodal) must be provided. Or you can choose `ChainProvider` from `@cosmos-kit/react`, which provides `DefaultModal`. Or you can use [`useChainWallet`](./use-chain-wallet) instead.
 
 - parameters:
   - **chainName**: `ChainName` ( = `string` );
@@ -10,7 +10,7 @@
 
 > parameter `sync` means whether to synchronize connection and disconnection to all other activated chainWallets.
 
-- return type: [**ChainContext**](#type-chaincontext)
+- return type: [**ChainContext**](#type---chaincontext)
 
 ## Type - ChainContext
 
@@ -41,8 +41,8 @@
 | **closeView**                | close modal                                                                           | -                                                                                                                            | `void`                           | N        |
 | **connect**                  | connect wallet                                                                        | **wallet**?: `WalletName`                                                                                                    | `void`                           | Y        |
 | **disconnect**               | disconnect current selected wallet                                                    | -                                                                                                                            | `void`                           | Y        |
-| **getRpcEndpoint**           | return rpc endpoint, `isLazy` explanation is [here](/provider/chain-provider#isLazy)  | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
-| **getRestEndpoint**          | return rest endpoint, `isLazy` explanation is [here](/provider/chain-provider#isLazy) | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
+| **getRpcEndpoint**           | return rpc endpoint, `isLazy` explanation is [here](../provider/chain-provider#islazy)  | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
+| **getRestEndpoint**          | return rest endpoint, `isLazy` explanation is [here](../provider/chain-provider#islazy) | **isLazy**?: `boolean`                                                                                                       | `string \| ExtendedHttpEndpoint` | Y        |
 | **getStargateClient**        | -                                                                                     | -                                                                                                                            | `StargateClient`                 | Y        |
 | **getCosmWasmClient**        | -                                                                                     | -                                                                                                                            | `CosmWasmClient`                 | Y        |
 | **getSigningStargateClient** | always validate endpoint in method                                                    | -                                                                                                                            | `SigningStargateClient`          | Y        |
@@ -73,7 +73,7 @@
 
 ### Methods from Wallet Client
 
-> These methods are equal to wallet client methods with argument `chainId` assigned as `chainId` corresponding to hook argument `chainName`. If you want to directly use wallet client methods, choose hook [`useWalletClient`](/hooks/use-wallet-client) instead.
+> These methods are equal to wallet client methods with argument `chainId` assigned as `chainId` corresponding to hook argument `chainName`. If you want to directly use wallet client methods, choose hook [`useWalletClient`](./use-wallet-client) instead.
 
 | Name                       | Description                                                                                                                                                                     | Parameters                                                                                 | Return Type           | Is Async |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | --------------------- | -------- |

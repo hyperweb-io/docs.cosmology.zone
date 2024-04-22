@@ -1,8 +1,8 @@
 ## Hook - useChains
 
-- required provider: [**ChainProvider**](/provider/chain-provider) from either `@cosmos-kit/react` or `@cosmos-kit/react-lite`
+- required provider: [**ChainProvider**](../provider/chain-provider) from either `@cosmos-kit/react` or `@cosmos-kit/react-lite`
 
-> To use `useChains` with `ChainProvider` from `@cosmos-kit/react-lite`, property [`walletModal`](/provider/chain-provider#walletmodal) must be provided. Or you can choose `ChainProvider` from `@cosmos-kit/react`, which provides `DefaultModal`. Or you can use [`useChainWallet`](/hooks/use-chain-wallet) instead.
+> To use `useChains` with `ChainProvider` from `@cosmos-kit/react-lite`, property [`walletModal`](../provider/chain-provider#walletmodal) must be provided. Or you can choose `ChainProvider` from `@cosmos-kit/react`, which provides `DefaultModal`. Or you can use [`useChainWallet`](./use-chain-wallet) instead.
 
 - parameters:
     - **chainNames**: `ChainName[]`
@@ -10,7 +10,7 @@
 
 > parameter `sync` means whether to synchronize connection and disconnection to all other activated chainWallets.
 
-- return type: **Record&lt;ChainName, [**ChainContext**](/hooks/use-chain#type-chaincontext)&gt;**
+- return type: **Record&lt;ChainName, [**ChainContext**](./use-chain#type---chaincontext)&gt;**
 
 ## Usage
 ```jsx

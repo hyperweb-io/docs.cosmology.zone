@@ -1,6 +1,6 @@
-Chain Provider provides necessary information for [hooks](/hooks).
+Chain Provider provides necessary information for [hooks](../hooks).
 
-There are two `ChainProvider` from two packages (`@cosmos-kit/react` and `@cosmos-kit/react-lite`) respectively. They are basically the same only except that `ChainProvider` from `@cosmos-kit/react` has more properties of `default modal` (See [Properties for default modal ](#properties-for-default-modal) below).
+There are two `ChainProvider` from two packages (`@cosmos-kit/react` and `@cosmos-kit/react-lite`) respectively. They are basically the same only except that `ChainProvider` from `@cosmos-kit/react` has more properties of `default modal` (See [Properties for default modal ](#optional-properties-only-for-default-modal) below).
 
 > Note: `preferredSignType` in [`signerOptions`](#signeroptions) determines which signer to use when signing document. By default using `amino` type.
 
@@ -102,7 +102,7 @@ export const wallets = [keplrExtension, KeplrMobile];
 
 In addition, you can integrate new wallets in a few steps.
 
-🔌 [How to integrate new wallets into CosmosKit](/integrating-wallets/adding-new-wallets)
+🔌 [How to integrate new wallets into CosmosKit](../integrating-wallets/adding-new-wallets)
 
 ### walletconnectOptions
 
@@ -130,7 +130,7 @@ See [`AssetList` schema](https://github.com/cosmos/chain-registry/blob/master/as
 
 ### walletModal
 
-Optional in most cases (Exception see [useChain](/hooks/use-chain)).
+Optional in most cases (Exception see [useChain](../hooks/use-chain)).
 
 **Type**: `({ isOpen, setOpen, walletRepo }: WalletModalProps) => JSX.Element`
 
@@ -401,7 +401,7 @@ Optional property. By default `true`.
 
 **Type:** `boolean`
 
-If set `false`, will NOT subscribe registered `connectEventNamesOnWindow` and `connectEventNamesOnClient` in [wallet registry](/integrating-wallets/adding-new-wallets#optional-properties).
+If set `false`, will NOT subscribe registered `connectEventNamesOnWindow` and `connectEventNamesOnClient` in [wallet registry](../integrating-wallets/adding-new-wallets#optional-properties).
 
 ## Optional Properties Only for Default Modal
 
