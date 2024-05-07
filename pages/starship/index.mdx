@@ -47,6 +47,9 @@ import React from "react";
 Starship is a unified development environment that allows Cosmos developers to spin up a fully simulated mini-cosmos ecosystem
 and write end-to-end test cases
 
+
+Go to the [Official Project](https://github.com/cosmology-tech/starship) (👷‍♀️in progress...).
+
 ## Get Started
 
 ⚡️ How to use Starship?
@@ -54,6 +57,13 @@ Follow the Steps 1 to 4 in Get Started section
 
 ## Projects using Starship
 
+### [Cosmos-sdk](https://github.com/cosmos/cosmos-sdk/tree/main/tests/starship)
+
+Cosmos-SDK is running Starship for testing out the latest simapp. Runs in [CI/CD](https://github.com/cosmos/cosmos-sdk/actions/workflows/starship-tests.yml)
+### [Mesh-Security](https://github.com/osmosis-labs/mesh-security-sdk/tree/main/tests/starship)
+
+For mesh-security development, Starship is being used to create a dev environment in a cloud cluster to
+run 2 chains and a relayer, setup mesh-security contracts between them, as well as spin up mesh-security frontend as well.
 ### [OsmoJS](https://github.com/osmosis-labs/osmojs/pull/36)
 
 JS library using Starship to run end-to-end tests against Osmosis chain. (Run in CI/CD)
@@ -72,6 +82,6 @@ Run tests with Golang
 
 Setup chain with cosmovisor setup with different chain version binaries.
 Run tests with Golang
-### [Multi chain setup](https://github.com/cosmology-tech/starship/blob/main/examples/multi-chain/configs/osmo-juno-cosmos.yaml)
+### [Multi chain setup](https://github.com/cosmology-tech/starship/blob/main/examples/multi-chain/config.yaml)
 
-Multi chain setup with 2 chains with 4 validators, a ts-relayer between them and the explorer
+Multi chain setup with 3 chains, 2 relayers between the chain, explorer and registry
