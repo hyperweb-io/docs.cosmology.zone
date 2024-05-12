@@ -50,3 +50,7 @@ jobs:
       - name: Invalidate CloudFront
         if: github.ref == 'refs/heads/main' || github.event_name != 'pull_request'
         run: yarn invalidate:ci
+
+      - name: Prepare seo
+        if: github.ref == 'refs/heads/main' || github.event_name != 'pull_request'
+        run: bash ./scripts/seo.sh
