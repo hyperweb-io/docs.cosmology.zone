@@ -11,7 +11,9 @@
     "postexport": "npm run seo",
     "seo": "node ./seo/seo.js",
     "deploy": "AWS_PROFILE=webinc aws s3 sync out/ s3://docs.cosmology.zone",
+    "deploy:ci": "aws s3 sync out/ s3://docs.cosmology.zone",
     "invalidate": "AWS_PROFILE=webinc aws cloudfront create-invalidation --distribution-id E2CDD5CS37JQUE --paths \"/*\"",
+    "invalidate:ci": "aws cloudfront create-invalidation --distribution-id E2CDD5CS37JQUE --paths \"/*\"",
     "deploy:all": "npm run export && npm run deploy && ./seo/prepare.sh",
     "upgrade": "yarn upgrade-interactive --latest"
   },
