@@ -7,10 +7,11 @@ import { ChainProvider } from "@cosmos-kit/react";
 import { useConfig } from "nextra-theme-docs";
 import { ThemeProvider, useTheme } from "@interchain-ui/react";
 import { useNextraTheme } from "../components/hooks";
-
-// import { makeWeb3AuthWallets } from "@cosmos-kit/web3auth";
+import { RedirectSplashPage } from "../components/redirect-splash-page";
 import "nextra-theme-docs/style.css";
 import React from "react";
+
+// import { makeWeb3AuthWallets } from "@cosmos-kit/web3auth";
 
 function MyApp({ Component, pageProps }: AppProps) {
   // const web3AuthWallets = useMemo(
@@ -82,7 +83,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       >
         <div className={themeClass}>
-          <Component {...pageProps} />
+          <RedirectSplashPage fallbackChildran={<Component {...pageProps} />} />
         </div>
       </ChainProvider>
     </ThemeProvider>
